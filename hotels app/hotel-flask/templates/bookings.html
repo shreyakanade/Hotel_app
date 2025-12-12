@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Bookings</h2>
+<table class="table table-striped">
+  <thead><tr><th>ID</th><th>Name</th><th>Room</th><th>Check-in</th><th>Check-out</th><th>Status</th><th>Action</th></tr></thead>
+  <tbody>
+    {% for b in bookings %}
+    <tr>
+      <td>{{ b.id }}</td>
+      <td>{{ b.name }}</td>
+      <td>{{ b.room_no }}</td>
+      <td>{{ b.check_in }}</td>
+      <td>{{ b.check_out }}</td>
+      <td>{{ b.status }}</td>
+      <td><a class="btn btn-sm btn-outline-primary" href="{{ url_for('booking_detail', booking_id=b.id) }}">View</a></td>
+    </tr>
+    {% else %}
+    <tr><td colspan="7">No bookings</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

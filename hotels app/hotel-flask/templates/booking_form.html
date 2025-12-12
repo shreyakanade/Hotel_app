@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>New Booking</h2>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">{{ form.name.label }} {{ form.name(class="form-control") }}</div>
+  <div class="mb-3">{{ form.phone.label }} {{ form.phone(class="form-control") }}</div>
+  <div class="mb-3">{{ form.room_no.label }} {{ form.room_no(class="form-control") }}</div>
+  <div class="mb-3">{{ form.guests.label }} {{ form.guests(class="form-control") }}</div>
+  <div class="mb-3">{{ form.check_in.label }} {{ form.check_in(class="form-control") }}</div>
+  <div class="mb-3">{{ form.check_out.label }} {{ form.check_out(class="form-control") }}</div>
+  <div class="mb-3">{{ form.package.label }} {{ form.package(class="form-select") }}</div>
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

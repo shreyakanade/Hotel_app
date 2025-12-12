@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dinner Menu</h2>
+<a class="btn btn-primary mb-3" href="{{ url_for('menu_new') }}">Add Item</a>
+<table class="table">
+  <thead><tr><th>Name</th><th>Description</th><th>Price</th></tr></thead>
+  <tbody>
+    {% for it in items %}
+    <tr><td>{{ it.name }}</td><td>{{ it.description }}</td><td>₹{{ it.price }}</td></tr>
+    {% else %}
+    <tr><td colspan="3">No items</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

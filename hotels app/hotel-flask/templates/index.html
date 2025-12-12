@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron p-4 bg-light">
+  <h1 class="display-6">Welcome to Hotel Management</h1>
+  <p>Total rooms: {{ total_rooms }}, currently booked: {{ booked }}</p>
+  <a href="{{ url_for('booking_new') }}" class="btn btn-primary">Create Booking</a>
+</div>
+{% endblock %}

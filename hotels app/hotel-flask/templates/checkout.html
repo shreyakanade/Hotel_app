@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Checkout Booking #{{ b.id }}</h3>
+<p>Are you sure you want to checkout {{ b.name }} (Room {{ b.room_no }})?</p>
+<form method="POST">
+  <button class="btn btn-danger">Confirm Checkout</button>
+  <a href="{{ url_for('booking_detail', booking_id=b.id) }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

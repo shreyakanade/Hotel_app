@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Booking #{{ b.id }}</h2>
+<ul class="list-group">
+  <li class="list-group-item"><strong>Name:</strong> {{ b.name }}</li>
+  <li class="list-group-item"><strong>Phone:</strong> {{ b.phone }}</li>
+  <li class="list-group-item"><strong>Room:</strong> {{ b.room_no }}</li>
+  <li class="list-group-item"><strong>Guests:</strong> {{ b.guests }}</li>
+  <li class="list-group-item"><strong>Check-in:</strong> {{ b.check_in }}</li>
+  <li class="list-group-item"><strong>Check-out:</strong> {{ b.check_out }}</li>
+  <li class="list-group-item"><strong>Status:</strong> {{ b.status }}</li>
+  <li class="list-group-item"><strong>Package:</strong> {{ b.package.name if b.package else 'None' }}</li>
+</ul>
+
+<div class="mt-3">
+  {% if b.status == 'booked' %}
+    <form action="{{ url_for('booking_checkin', booking_id=b.id) }}" method="post" style="display:inline">
+      <button class="btn btn-success">Check-in</button>
+    </form>
+  {% endif %}
+  {% if b.status in ['booked', 'checked_in'] %}
+    <a href="{{ url_for('booking_checkout', booking_id=b.id) }}" class="btn btn-warning">Check-out</a>
+  {% endif %}
+  <a href="{{ url_for('bookings') }}" class="btn btn-secondary">Back</a>
+</div>
+{% endblock %}
